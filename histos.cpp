@@ -503,9 +503,8 @@ void histos() {
     //std::cout << "Int_t sigMean = {0=33.7, 1=37.3, 2=40.9, 3=2.6, 4=14.3, 5=26.0, 6=4.4, 7=7.3, 8=10.2, 9=7.8};
 
     TString simDir = "sims/";
-    TString simFileName = "Pim_4GeV_10m_Adjusted_33.7mmOffset_50.3mmVSig_50.3mmHSig_kB132_FTFP_BERT_100000_1.edm4hep.root";
+    TString simFileName = "MCSimulation.edm4hep.root";
 
-    //TString histoDir = "~/Projects/ANL/bbcal/histos_newGeo/v2.1/paper/";
     TString histoDir = "histograms/";
     TString histoFileName = "Histos.root";
     
