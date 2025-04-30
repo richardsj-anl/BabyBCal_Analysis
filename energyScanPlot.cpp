@@ -369,20 +369,21 @@ void energyScanPlot () {
     Double_t low10 = 2.00;
     Double_t high10 = 6.00;
 
-    //TString imagesDir = "~/Projects/ANL/bbcal/images_newGeo/pim/v2.1/paper/";
-    TString imagesDir = "~/Projects/ANL/bbcal/images_newGeo/pim/v2.1/paper/energyScan/updated/";
+    TString imagesDir = "energyScan/";
 
-    TFile dataFile("~/Projects/ANL/bbcal/FTBF_data/Pion_Analysis_Histograms_U.root", "READ");  // e calib "U"
-    //TFile dataFile("~/Projects/ANL/bbcal/FTBF_data/Pion_Analysis_Histograms.root", "READ");  // e calib "O"
-    //TFile dataFile("~/Projects/ANL/bbcal/FTBF_data/Pion_Analysis_Histograms_NN.root", "READ");  // e calib "O" and nearest neighbor
-    TFile mcFile("~/Projects/ANL/bbcal/histos_newGeo/v2.1/paper/paperHistosNoGeoCut.root", "READ");
-    //TFile mcFile("~/Projects/ANL/bbcal/histos_newGeo/v2.1/paper/paperHistosAll4.root", "READ");
-    //TFile mcFile("~/Projects/ANL/bbcal/histos_newGeo/v2.1/paper/paperHistos2.root", "READ");
+    // Check if imagesDir exists, create it if it doesn't
+    if (gSystem->AccessPathName(imagesDir)) {
+        std::cout << "Directory " << imagesDir << " does not exist. Creating it..." << std::endl;
+        gSystem->mkdir(imagesDir, kTRUE); // kTRUE for recursive creation
+    }
+
+    TFile dataFile("FTBF_data/Pion_Analysis_Histograms_U.root", "READ");  // e calib "U"
+    TFile mcFile("histograms/Histos.root", "READ");
 
     //--------------Histos from Henry--------------------------------------
-    TH1F *hData_4 = (TH1F*) dataFile.Get("h4_Electron");
-    TH1F *hData_6 = (TH1F*) dataFile.Get("h6_Electron");
-    TH1F *hData_8 = (TH1F*) dataFile.Get("h8_Electron");
+    TH1F *hData_4 = (TH1F*) dataFile.Get("h4_Electron");  //Electron Calibration
+    TH1F *hData_6 = (TH1F*) dataFile.Get("h6_Electron");  //Electron Calibration
+    TH1F *hData_8 = (TH1F*) dataFile.Get("h8_Electron");  //Electron Calibration
 
     hData_4->Rebin(1);
     hData_6->Rebin(1);

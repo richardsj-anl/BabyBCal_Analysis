@@ -89,12 +89,15 @@ void eResPlot() {
     int darker10 = darkerShade(dark10);
 
     // File and directory
-    TString imagesDir = "~/Projects/ANL/bbcal/images_newGeo/ele/v2.1/paper/ERes/";
-    //TString imagesDir = "~/Projects/ANL/bbcal/images_newGeo/ele/v2.1/paper/ERes/updated/";
-    //TFile mcFile("~/Projects/ANL/bbcal/histos_newGeo/v2.1/paper/paperHistosAll.root", "READ");
-    //TFile mcFile("~/Projects/ANL/bbcal/histos_newGeo/v2.1/paper/paperHistosAll2.root", "READ");
-    TFile mcFile("~/Projects/ANL/bbcal/histos_newGeo/v2.1/paper/paperHistosNoGeoCut.root", "READ");
-    //TFile mcFile("~/Projects/ANL/bbcal/histos_newGeo/v2.1/paper/paperHistosGeoCut.root", "READ");
+    TString imagesDir = "ERes/";
+
+    // Check if imagesDir exists, create it if it doesn't
+    if (gSystem->AccessPathName(imagesDir)) {
+        std::cout << "Directory " << imagesDir << " does not exist. Creating it..." << std::endl;
+        gSystem->mkdir(imagesDir, kTRUE); // kTRUE for recursive creation
+    }
+
+    TFile mcFile("histograms/Histos.root", "READ");
     if (!mcFile.IsOpen()) {
         std::cerr << "Error: Could not open Histo file!" << std::endl;
         return;
