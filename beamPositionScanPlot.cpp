@@ -341,7 +341,7 @@ void beamPositionScanPlot () {
     }
 
 
-    TFile dataFile("FTBF_data/Pion_Analysis_Histograms_U.root", "READ");  // e calib "U"
+    TFile dataFile("FTBF_data/Data.root", "READ");  // e calib "U"
     TFile mcFile("histograms/Histos.root", "READ");
 
     //--------------Histos from Henry--------------------------------------
